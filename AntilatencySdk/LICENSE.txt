@@ -1,0 +1,103 @@
+End-User License Agreement ("Agreement", "EULA")
+
+These terms are binding between You ("You", "User") and ALT LLC and its affiliates (ALT LLC, "ALT") for the Software, Services, Hardware and any support material related to these terms.
+Please read this End-User License Agreement ("Agreement") carefully before clicking the "I Agree" button, downloading or installing Antilatency SDK, Drivers, documentation, and their components ("Software").
+
+By clicking the "I Agree" button, downloading, installing or using the Software, You agree to be bound by the terms and conditions of this Agreement. If You do not agree to the terms of this Agreement, do not click on the "I Agree" button and do not download, install or use the Software.
+
+1. Definitions
+	The software products are composed of proprietary Antilatency SDK, Drivers, documentation, and their components. In this EULA, all related components, associated media, printed materials, and electronic documentation are collectively referred to as the "Software".
+
+	The ALT tracker, Tracking area, Wired USB socket, Tag, HMD Radio Socket, Pico G2 Socket, and any other physical ALT product manufactured by ALT will be referred to as "Hardware."
+
+	The Software may enable access to ALT or third-party services provided by ALT or independent parties including, but not limited to the Internet, the operating systems, etc. The services may be subject to additional restrictions. You must agree to these additional terms to use or access the services. All these services are collectively referred to as the "Services".
+
+	Any fee(s) payable by You to ALT for the provision of the SOFTWARE, and any other fees payable by You under this EULA are collectively referred to as the "Fees".
+
+	Educational, research and scientific purposes use are collectively referred to as the "Educational Use".
+
+	A demonstrative use or any use of the Software for the purpose not related to business, professional or educational activity and/or which is not aimed at directly or indirectly gaining any financial benefits are collectively referred to as the "Non-Commercial Use".
+
+2. License
+	Provided that You have paid the applicable license fee, ALT LLC grants You revocable, non-exclusive, non-transferable, limited license to download, install and use the Software for Your purposes strictly following the terms of this Agreement. The User can also be given notice that by agreeing to the EULA, they also agree to adhere to the terms of other agreements, such as ALT's Terms of Services (ToS) or Privacy Policy (PP). The most current version of the ToS is located at https://antilatency.com/terms. The most current version of the PP is located at https://antilatency.com/policy.
+
+	Notwithstanding the foregoing, the Software may contain spdlog software owned by Copyright (c) 2016 Gabi Melman in order to enable the Services. Such software is subject to license terms and restrictions contained in the MIT License, as may be updated from time to time. The most current version of its License is located at
+	https://github.com/gabime/spdlog/blob/v1.x/LICENSE.
+
+3. License Versions. Fees and Taxes
+	For each Software You purchase from ALT, the product will be licensed (and not sold) to You on the terms of one of the license versions (Developer License, Educational License, Standard License, Extended License) set out in this clause as specified in ALT's invoice or order confirmation (as applicable) and subject to the other terms and conditions of this EULA. Whichever licensing versions model applies, You shall not at any one time use more copies of the Software than the total number of valid licenses purchased by the Licensee.
+
+	3.1 Developer License
+		If You are receiving a Developer License for the Software and/or You are receiving it free of charge, then notwithstanding any of the other terms and conditions of this License, Your use of the Software (which includes use by Your Permitted Users) is limited as follows: no support or maintenance shall be provided to You in respect of the Software; ALT may immediately terminate this License at any time for any reason by giving You written notice; You can use the Software non-commercially, evaluating the Hardware and demonstrating the Software in order to determine whether to purchase and license it from ALT with the following restrictions:
+			Non-Commercial Use,
+			up to 30m2 tracking area,
+			unlimited trackers per user.
+
+	3.2 Standard License
+		You can get a standard license if You pay the fee which was directly, explicitly agreed with ALT in a written agreement. The amount of the fee depends on the agreed conditions. You can use the Software with Standard License for commercial use with the following restrictions:
+			commercial use,
+			unlimited area,
+			up to 4 trackers per user.
+
+	3.3 Extended License
+		You can get an extended license if You pay the fee which was directly, explicitly agreed with ALT in a written agreement. The amount of the fee depends on the agreed conditions. You can use the Software with Extended License for commercial use with the following restrictions:
+			commercial use,
+			unlimited area,
+			unlimited trackers per user.
+
+	3.4 Educational License
+		ALT offer license to universities and other research or academic institutions when using  Software exclusively for teaching or research purposes. An Educational License is a full-featured license at a special price for a students, faculty (teachers, instructors, and professors), and schools only (proof of status is required). Payment of the license fee shall be made by the User as set forth in the applicable order form (order web-form) to grant Educational License of Software.
+		You can use the Software with Educational License with the following restrictions:
+			Educational Use,
+			unlimited area,
+			unlimited trackers per user.
+
+	3.5 Verification
+		For license verification purposes, You acknowledge that the Software may electronically transmit summary data relating to the use of the Software to ALT (Computer Hardware Summary, MAC address, etc).
+
+	3.6. Taxes
+		Our fees are exclusive of all taxes that are payable in respect of the Software or its use in the jurisdiction in which the payment is either made or received. To the extent by which any taxes, duties or similar levies are payable, You must pay the amount of such taxes, duties or similar levies in addition to any fees owed by You under this EULA.
+
+4. Restrictions
+	You may not reproduce, modify, transfer, transmit, sublicense, or export the Software. You may not disassemble, decompile, reverse engineer the Software, and You may not allow others to do the same. To the extent You are permitted under applicable law to reverse engineer for interoperability purpose, You must (a) state Your purpose in a written request to ALT, and (b) allow ALT the opportunity to investigate and provide the necessary information.
+
+5. Modifications to Software
+	ALT LLC reserves the right to modify, suspend or discontinue, temporarily or permanently, the Software or any service to which it connects, with or without notice and without liability to You.
+
+6. Term and Termination
+	This Agreement shall remain in effect until terminated by You or ALT LLC.
+	ALT LLC may, in its sole discretion, at any time and for any or no reason, suspend or terminate this Agreement with prior notice.
+	This Agreement will terminate immediately, without prior notice from ALT LLC, if You fail to comply with any provision of this Agreement. You may also terminate this Agreement by deleting the SOFTWARE and all copies thereof from Your mobile device or Your desktop.
+	Upon termination of this Agreement, You shall cease all use of the SOFTWARE and delete all copies of the SOFTWARE from Your devices.
+	ALT is entitled to terminate the Developer version, the Standard version or the Extended version by blocking the License Key during the license term with immediate effect and without prior notice in the event You fail to comply with the terms in this EULA, in the event You fail to pay Your fee for the License within the applicable payment term, or in the event ALT is required to do so by law or an order of an applicable court.
+
+7. Limitation of Liability
+	All Software, Services, Hardware shall be provided "as is" and "as available". None of ALT LLC and its affiliates or any of their related persons warrants the accuracy, adequacy or completeness of any Software, Services, Hardware and disclaims all liability for errors or omissions therein. No warranty of any kind is made by ALT LLC and its affiliates or any of their related persons in connection with any Software, Services, Hardware, including any warranty of merchantability, fitness for a particular purpose, non-infringement of third-party rights or freedom from viruses or other code defects.
+	The User and each of their affiliates executing this agreement and each secured party agree that ALT LLC and its affiliates have no responsibility for maintaining or providing any equipment, software, services or any testing required in connection with any electronic transmission or otherwise required for any Software, Services, Hardware.
+	If the User's jurisdiction does not allow the exclusion of implied warranties or certain kinds of limitations or exclusions of liability, so the above limitations and exclusions may not apply to the User. Other jurisdictions allow limitations and exclusions subject to certain conditions. In such a case the above limitations and exclusions shall apply to the fullest extent permitted by the laws of such applicable jurisdictions.
+	If any part of the above limitations or exclusions is held to be void or unenforceable, such part shall be deemed to be deleted from this Agreement and the remainder of the limitation or exclusion shall continue in full force and effect. Any rights the User may have as a consumer (i.e. a purchaser for private as opposed to business, academic or government use) are not affected.
+
+8. Disclaimer of Warranty
+	ALT disclaims any and all warranties, express or implied, including any implied warranty of merchantability or fitness for a particular purpose. You acknowledge and agree that You had full opportunity to test Software, Services, Hardware before any live, public or production use; that You assume full responsibility for selecting and using Software, Services, Hardware and distributing files created through the use of Software, Services, Hardware; and that if You use Software, Services, Hardware improperly or against instructions, You can cause damage to Your files, software, data or business. The entire risk as to the quality and performance of Software, Services, Hardware is borne by You. This disclaimer of warranty constitutes an essential part of the agreement.
+
+9. Export Control
+	The Software, including technical data/cryptographic software, may be subject to Russian, European Union, U.S., and other export controls and may be subject to import or export controls in other countries. You agree to strictly comply with all applicable import and export regulations.
+
+10. Force Majeure
+	Notwithstanding anything to the contrary contained herein, ALT shall not be liable for any delays or failures in performance resulting from acts beyond its reasonable control including, without limitation, acts of God, terrorist acts, shortage of supply, breakdowns or malfunctions, interruptions or malfunction of computer facilities, or loss of data due to power failures or mechanical difficulties with information storage or retrieval systems, labor difficulties, war, or civil unrest.
+
+11. Intellectual Property
+	Except for the rights expressly granted under this agreement, nothing in this agreement will function to transfer any of either party's Intellectual Property rights to the other party, and each party will retain an exclusive interest in and ownership of its Intellectual Property developed before this agreement or developed outside the scope of this agreement.
+
+12. Copyright and Intellectual Property Infringement
+	If any person shall do or perform any acts which the ALT believes constitute a copyright infringement of the Software, or constitute plagiarism, or violate or infringe any right of the ALT or any licensee of the ALT (as the case may be), or if any person shall do or perform any acts that the ALT believes constitute an unauthorized or unlawful distribution, exhibition, or use thereof, then and in any such event, the ALT may and shall have the exclusive right to take such steps and institute such suits or proceedings as the ALT may deem advisable or necessary to prevent such acts and to secure damages and other relief by reason thereof, and to generally take such steps as may be advisable, necessary or proper for the full protection of the rights of such parties.
+
+13. Severability
+	If any provision of this Agreement is held to be unenforceable or invalid, such provision will be changed and interpreted to accomplish the objectives of such provision to the greatest extent possible under applicable law and the remaining provisions will continue in full force and effect.
+
+14. Amendments to Agreement
+	ALT LLC reserves the right, at its sole discretion, to modify or replace this Agreement at any time. If a revision is material, we will provide at least 30 days' notice  prior to any new terms taking effect. What constitutes a material change will be determined at ALT's sole discretion.
+
+15. Contact Information
+	ALT Limited Liability Company
+	info@antilatency.com
