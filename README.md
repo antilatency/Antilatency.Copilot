@@ -32,7 +32,7 @@ You need
 * A microSD card with installed operating system (OS) and MAVSDK.
 * A pair of Antilatency devices: an [Alt] and a [Wired USB Socket].
 * A computer with Windows 10 and installed [AntilatencyService].
-* An properly assembled tracking area. Appropriate to her [Environment] should be added to [AntilatencyService].
+* An properly assembled tracking area. Appropriate to [Environment] should be added to [AntilatencyService].
 * A drone with PX4 autopilot.
 
 ## Getting started
