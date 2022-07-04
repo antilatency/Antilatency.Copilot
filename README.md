@@ -1,5 +1,12 @@
 # Antilatency Copilot Demo C++
 
+CoPilot is an Antilatency project. We use our accurate optical-inertial tracking system with Raspberry Pi to provide you with precise indoor navigation and outdoor landing for drones in different use cases.
+
+This project features Antilatency Copilot Demo, which provides functionality for autonomous landing of drones equipped with a [PX4] autopilot at predefined coordinates using Antilatency libraries and [MAVSDK].
+
+[<p align="center">
+<img src="ImageForReadme/VideoCoverPlay.png" width="680px"></p>](https://youtu.be/T4TEdzSLyi0)
+
 ## Table of Contens
 * [Overview](#overview)
 * [Getting started](#getting-started)
@@ -14,7 +21,6 @@
 
 
 ## Overview 
-This project features Antilatency Copilot Demo, which provides functionality for autonomous landing of drones equipped with a [PX4] autopilot at predefined coordinates using [Antilatency libraries] and [MAVSDK].
 
 Structure: 
 * ./AntilatencySdk/Api contains headers for Antilatency libraries;
