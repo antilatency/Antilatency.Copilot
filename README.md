@@ -1,11 +1,30 @@
-# Antilatency Copilot Demo C++
+<h1 align="center">Antilatency Copilot - precise outdoor landing and indoor positioning for drones</h1>
 
-CoPilot is an Antilatency project. We use our accurate optical-inertial tracking system with Raspberry Pi to provide you with precise indoor navigation and outdoor landing for drones in different use cases.
+<p align="center">
+  <img src="ImageForReadme/CopilotIconSquare.png" alt="angular-logo" width="120px" height="120px"/>
+  <br>
+  <i>Antilatency Copilot is a positional solution based on Antilatency tracking system and
+    <br> Raspberry PI that provides you with precise indoor navigation and outdoor landing for 
+    <br> drones</i>
+  <br>
+</p>
+
+<p align="center">
+  <a href="https://copilot.antilatency.com/"><strong>copilot.antilatency.com</strong></a>
+</p>
+
+<p align="center">
+    <a href="https://discord.gg/rycqv3mq">
+    <img src="ImageForReadme/DiscordButton.svg" alt="Discord conversation" width="180px"/>
+  </a>
+</p>
+
+# Antilatency Copilot Demo C++
 
 This project features Antilatency Copilot Demo, which provides functionality for autonomous landing of drones equipped with a [PX4] autopilot at predefined coordinates using Antilatency libraries and [MAVSDK].
 
 [<p align="center">
-<img src="ImageForReadme/VideoCoverPlay.png" width="680px"></p>](https://youtu.be/T4TEdzSLyi0)
+<img src="ImageForReadme/Cover.png" width="680px"></p>](https://youtu.be/T4TEdzSLyi0)
 
 ## Table of Contens
 * [Overview](#overview)
@@ -32,7 +51,7 @@ You need
 * A microSD card with installed operating system (OS) and MAVSDK.
 * A pair of Antilatency devices: an [Alt] and a [Wired USB Socket].
 * A computer with Windows 10 and installed [AntilatencyService].
-* An properly assembled tracking area. Appropriate to her [Environment] should be added to [AntilatencyService].
+* An properly assembled tracking area. Appropriate to [Environment] should be added to [AntilatencyService].
 * A drone with PX4 autopilot.
 
 ## Getting started
