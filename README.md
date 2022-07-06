@@ -37,7 +37,7 @@ This project features Antilatency Copilot Demo, which provides functionality for
 
 <p align="center">
   <a href = "https://youtu.be/T4TEdzSLyi0" target="_blank">
-    <img src="ImageForReadme/Cover.png" width="680px"></p>
+    <img src="ImageForReadme/cover.png" width="680px"></p>
   </a>
 </p>
 
