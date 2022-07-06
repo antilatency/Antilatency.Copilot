@@ -24,9 +24,7 @@
 <br>
 
 <p align="center">
-  <a href="https://discord.gg/rycqv3mq">
-    <img src="ImageForReadme/DiscordButton.svg" alt="Discord conversation" width="180px"/>
-  </a>
+  <a href="https://discord.gg/rycqv3mq"><img src="ImageForReadme/DiscordButton.svg" alt="Discord conversation" width="180px"/></a>
 </p>
 
 <br>
@@ -36,8 +34,8 @@
 This project features Antilatency Copilot Demo, which provides functionality for autonomous landing of drones equipped with a [PX4] autopilot at predefined coordinates using Antilatency libraries and [MAVSDK].
 
 <p align="center">
-  <a href = "https://youtu.be/T4TEdzSLyi0" target="_blank">
-    <img src="ImageForReadme/cover.png" width="680px"></p>
+  <a href="https://youtu.be/T4TEdzSLyi0" target="_blank">
+    <img src="ImageForReadme/cover.png" width="680px">
   </a>
 </p>
 
