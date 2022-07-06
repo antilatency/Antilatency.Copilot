@@ -1,30 +1,47 @@
 <h1 align="center">Antilatency Copilot - precise outdoor landing and indoor positioning for drones</h1>
 
+<br>
+
 <p align="center">
-  <img src="ImageForReadme/CopilotIconSquare.png" alt="angular-logo" width="120px" height="120px"/>
+  <a href="https://copilot.antilatency.com/">
+    <img src="ImageForReadme/CopilotIconSquare.png" alt="angular-logo" width="120px" height="120px"/>
+  </a>
+  <br>
   <br>
   <i>Antilatency Copilot is a positional solution based on Antilatency tracking system and
     <br> Raspberry PI that provides you with precise indoor navigation and outdoor landing for 
-    <br> drones</i>
+    <br> drones
+  </i>
   <br>
 </p>
+
+<br>
 
 <p align="center">
   <a href="https://copilot.antilatency.com/"><strong>copilot.antilatency.com</strong></a>
 </p>
 
+<br>
+
 <p align="center">
-    <a href="https://discord.gg/rycqv3mq">
+  <a href="https://discord.gg/rycqv3mq">
     <img src="ImageForReadme/DiscordButton.svg" alt="Discord conversation" width="180px"/>
   </a>
 </p>
+
+<br>
 
 # Antilatency Copilot Demo C++
 
 This project features Antilatency Copilot Demo, which provides functionality for autonomous landing of drones equipped with a [PX4] autopilot at predefined coordinates using Antilatency libraries and [MAVSDK].
 
-[<p align="center">
-<img src="ImageForReadme/cover.png" width="680px"></p>](https://youtu.be/T4TEdzSLyi0)
+<p align="center">
+  <a href = "https://youtu.be/T4TEdzSLyi0" target="_blank">
+    <img src="ImageForReadme/Cover.png" width="680px"></p>
+  </a>
+</p>
+
+
 
 ## Table of Contens
 * [Overview](#overview)
