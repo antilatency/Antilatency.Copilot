@@ -24,7 +24,7 @@
 This project features Antilatency Copilot Demo, which provides functionality for autonomous landing of drones equipped with a [PX4] autopilot at predefined coordinates using Antilatency libraries and [MAVSDK].
 
 [<p align="center">
-<img src="ImageForReadme/Cover.png" width="680px"></p>](https://youtu.be/T4TEdzSLyi0)
+<img src="ImageForReadme/cover.png" width="680px"></p>](https://youtu.be/T4TEdzSLyi0)
 
 ## Table of Contens
 * [Overview](#overview)
