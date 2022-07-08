@@ -102,7 +102,7 @@ void TargetLanding::executingTargetLanding(float x, float z, float y, float yaw,
         if(_stageTargetLanding == PressInTarget){
             //Timeout if all ok
             _timeNow = std::chrono::duration_cast<std::chrono::seconds>(std::chrono::system_clock::now().time_since_epoch()).count();
-            if(_timeNow-_timeOfStartPressin>=3){
+            if((_timeNow-_timeOfStartPressin)>=3){
                 std::cout << "Position of landing target confirmed" << std::endl;
                 _timeOfStartPressin = 0;
                 _timeNow = 0;
