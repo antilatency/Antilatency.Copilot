@@ -7,45 +7,36 @@
 #include <Antilatency.Api.h>
 #include <Antilatency.InterfaceContract.LibraryLoader.h>
 
-#include "CopilotAngles.h"
+#include "CopilotMath.h"
 
 class TrackingForCopilot
 {
 public:
 
-    TrackingForCopilot();
-    TrackingForCopilot(int updatePeriodDataInConsolms);
+    TrackingForCopilot(Antilatency::DeviceNetwork::ILibrary& deviceNetworkLibrary,
+                       Antilatency::Alt::Tracking::ILibrary& altTrackingLibrary,
+                       Antilatency::Alt::Environment::Selector::ILibrary& environmentSelectorLibrary);
 
-    void setEnvironmentAndPlacementData(std::string environmentData,std::string placementData);
-    void setLibName(std::string libNameADN, std::string libNameTracking, std::string libNameEnvironmentSelector);
-    bool beginTracking();
+    bool createEnvironmentAndPlacement(std::string environmentData, std::string placementData);
+    bool createAltTrackingCotask();
 
+    bool getState(Antilatency::Alt::Tracking::State &state);
     Antilatency::Alt::Tracking::State getState();
-    Antilatency::Math::float3 getPosition();
-    Antilatency::Alt::Tracking::Stability getStability();
-    float getYaw();
-
-    bool isStateReady();
 
 private:
     Antilatency::DeviceNetwork::NodeHandle _getIdleTrackingNode(Antilatency::DeviceNetwork::INetwork network, Antilatency::Alt::Tracking::ITrackingCotaskConstructor altTrackingCotaskConstructor);
 
     std::string _environmentData;
     std::string _placementData;
-    std::string _libNameADN;
-    std::string _libNameTracking;
-    std::string _libNameEnvironmentSelector;
+    Antilatency::Alt::Environment::IEnvironment _environment;
+    Antilatency::Math::floatP3Q _placement;
 
-    std::mutex _mutex;
+    Antilatency::DeviceNetwork::INetwork _network;
+    Antilatency::Alt::Tracking::ITrackingCotask _altTrackingCotask;
+
+    Antilatency::DeviceNetwork::ILibrary* _deviceNetworkLibrary;
+    Antilatency::Alt::Tracking::ILibrary* _altTrackingLibrary;
+    Antilatency::Alt::Environment::Selector::ILibrary* _environmentSelectorLibrary;
 
     Antilatency::Alt::Tracking::State _state;
-    Antilatency::Alt::Tracking::Stability _stability;
-    Antilatency::Math::float3 _position;
-    AnglesInDegrees _angleDegreesFromAlt;
-    float _yaw   = NAN;
-    bool  _stateReady =  false;
-
-    long long _timeBegin;
-    long long _timeNow;
-    int _updatePeriodDataInConsolms = 0;
 };

@@ -24,11 +24,11 @@ public:
     void setTrackerData(mavsdk::Mocap::VisionPositionEstimate data);
     float getYaw();
 
-    bool arm_();
-    bool disarm_();
-    bool land_();
-    bool kill_();
-    bool offboardStart_();
+    bool doArm();
+    bool doDisarm();
+    bool doLand();
+    bool doKill();
+    bool offboardStart();
 
     bool goToPoint(mavsdk::Offboard::PositionNedYaw target);
     bool stopMoving(mavsdk::Offboard::PositionNedYaw target);
@@ -38,7 +38,7 @@ public:
     
 private:
 
-    void static getConnection(mavsdk::Mavsdk& mavsdk);
+    void static addConnection(mavsdk::Mavsdk& mavsdk);
     std::shared_ptr<mavsdk::System> static getSystem(mavsdk::Mavsdk& mavsdk);
     bool offboardResult(mavsdk::Offboard::Result& result);
 
@@ -50,10 +50,11 @@ private:
     mavsdk::Mocap* _mocap;
 
     mavsdk::Telemetry::PositionNed _telemetryDataNED;
-    mavsdk::Mocap::VisionPositionEstimate _trackerData;
+
 
     bool _telemetryReady=false;
     bool _systemAndPluginsReady = false;
     bool _trackerDataReady = false;
+    mavsdk::Mocap::VisionPositionEstimate _trackerData;
 
 };

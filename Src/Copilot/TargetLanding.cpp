@@ -1,7 +1,6 @@
 #include "TargetLanding.h"
 
 TargetLanding::TargetLanding(PX4 &px4, TrackingForCopilot &tracking){
-
     _px4 = &px4;
     _tracking = &tracking;
 }
@@ -12,13 +11,15 @@ void TargetLanding::executingTargetLanding(float x, float z, float y, float yaw,
 {
 
     float _precisionForWayPoint = 0.075;
+    Antilatency::Alt::Tracking::State state;
+    _tracking->getState(state);
 
-    auto positionTracking = _tracking->getPosition();
-    auto yawTracking = _tracking->getYaw();
+    auto positionTracking = state.pose.position;
+    auto yawTracking = quaternionAltToAngleDronePX4(state.pose.rotation).yawDeg;
 
         if(_px4->isLanding() && _px4->isArming()){
             std::cout << "I recived Land command again!" << std::endl;
-            _px4->offboardStart_();
+            _px4->offboardStart();
             _stageTargetLanding = GetingTargetLand;
         }
 
@@ -73,12 +74,12 @@ void TargetLanding::executingTargetLanding(float x, float z, float y, float yaw,
                 _stageTargetLanding = WaitingConditionForLanding;
             } else{
                 float multiplier = 1.0;
-                if(_tracking->getPosition().y>(-_landTarget.down_m+0.3)){
-                    multiplier = _tracking->getPosition().y/(-_landTarget.down_m+0.3);
+                if(positionTracking.y>(-_landTarget.down_m+0.3)){
+                    multiplier = positionTracking.y/(-_landTarget.down_m+0.3);
                 } else{
                     multiplier = 1.0;
                 }
-                _pointOfMove.down_m = (-_tracking->getPosition().y)+_stepDown*multiplier;
+                _pointOfMove.down_m = (-positionTracking.y)+_stepDown*multiplier;
                 _px4->goToPoint(_pointOfMove);
             }
         }
@@ -153,7 +154,7 @@ void TargetLanding::executingTargetLanding(float x, float z, float y, float yaw,
         }
 
         if(_stageTargetLanding == FinishTargetLanding){
-            _px4->kill_();
+            _px4->doKill();
             if(!_px4->isArming()){
                 _countRescueSituation = 0;
                 _stageTargetLanding = GetingTargetLand;

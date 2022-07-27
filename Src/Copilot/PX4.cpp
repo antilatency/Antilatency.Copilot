@@ -3,19 +3,8 @@
 using std::chrono::seconds;
 
 void PX4::connectToPX4(){
-    getConnection(_mavsdk);
+    addConnection(_mavsdk);
     _system = getSystem(_mavsdk);
-}
-
-void PX4::setVisionPositionEstimate()
-{
-    while(true){
-        if(_trackerDataReady){
-            _mocap->set_vision_position_estimate(_trackerData);
-            _trackerDataReady = false;
-        }
-        std::this_thread::sleep_for(std::chrono::milliseconds(10));
-    }
 }
 
 void PX4::createPluginsPX4(){
@@ -41,7 +30,18 @@ void PX4::createPluginsPX4(){
 
     _systemAndPluginsReady = true;
 
-    setVisionPositionEstimate();
+     setVisionPositionEstimate();
+
+}
+
+void PX4::setVisionPositionEstimate()
+{
+    while(true){
+        if(_trackerDataReady){
+            _mocap->set_vision_position_estimate(_trackerData);
+            _trackerDataReady = false;
+        }
+    }
 }
 
 bool PX4::isConnected(){
@@ -74,7 +74,7 @@ void PX4::setTrackerData(mavsdk::Mocap::VisionPositionEstimate data){
     _trackerDataReady = true;
 }
 
-bool PX4::arm_(){
+bool PX4::doArm(){
     if(!(this->isConnected())){
         std::cout << "Arming faild - lost system" << std::endl;
         return false;
@@ -89,7 +89,7 @@ bool PX4::arm_(){
     }
 }
 
-bool PX4::disarm_(){
+bool PX4::doDisarm(){
     if(!(this->isConnected())){
         std::cout << "Disarming faild - lost system" << std::endl;
         return false;
@@ -104,7 +104,7 @@ bool PX4::disarm_(){
     }
 }
 
-bool PX4::land_(){
+bool PX4::doLand(){
     if(!(this->isConnected())){
         std::cout << "Land faild - lost system" << std::endl;
         return false;
@@ -119,7 +119,7 @@ bool PX4::land_(){
     }
 }
 
-bool PX4::kill_(){
+bool PX4::doKill(){
     if(!(this->isConnected())){
         std::cout << "Kill faild - lost system" << std::endl;
         return false;
@@ -134,7 +134,7 @@ bool PX4::kill_(){
     }
 }
 
-bool PX4::offboardStart_(){
+bool PX4::offboardStart(){
     if(!(this->isConnected())){
         std::cout << "Offboard faild - lost system" << std::endl;
         return false;
@@ -180,7 +180,7 @@ float PX4::getYaw(){
     }
 }
 
-void PX4::getConnection(mavsdk::Mavsdk &mavsdk){
+void PX4::addConnection(mavsdk::Mavsdk &mavsdk){
     mavsdk::ConnectionResult connection_result = mavsdk.add_any_connection("serial:///dev/serial0:921600");
     if (connection_result != mavsdk::ConnectionResult::Success) {
         std::cerr << connection_result << std::endl;
@@ -202,7 +202,6 @@ std::shared_ptr<mavsdk::System> PX4::getSystem(mavsdk::Mavsdk &mavsdk) //Discove
 
         if (system->has_autopilot()) {
             std::cout << "Discovered autopilot\n";
-
             // Unsubscribe again as we only want to find one system.
             mavsdk.subscribe_on_new_system(nullptr);
             prom.set_value(system);
@@ -211,12 +210,9 @@ std::shared_ptr<mavsdk::System> PX4::getSystem(mavsdk::Mavsdk &mavsdk) //Discove
 
     // We usually receive heartbeats at 1Hz, therefore we should find a
     // system after around 3 seconds max, surely.
-    while(true){
-        if (fut.wait_for(seconds(3)) == std::future_status::timeout) {
+    if (fut.wait_for(seconds(3)) == std::future_status::timeout) {
             std::cerr << "No autopilot found.\n";
-        }   else {
-            break;
-        }
+            return {};
     }
     // Get discovered system now.
     return fut.get();
