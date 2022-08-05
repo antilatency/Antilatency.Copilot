@@ -4,10 +4,7 @@
 #include <Antilatency.Api.h>
 #include <Antilatency.Math.h>
 
-#include <mavsdk/mavsdk.h>
-#include <mavsdk/plugin_base.h>
 #include <mavsdk/plugins/offboard/offboard.h>
-#include <mavsdk/plugins/telemetry/telemetry.h>
 #include <mavsdk/plugins/mocap/mocap.h>
 
 struct AnglesInDegrees {
@@ -27,13 +24,13 @@ struct QuaternionDrone
     float w, x, y, z;
 };
 
-bool equal(float first,float second,float epsilon);
+bool compare(float first,float second,float epsilon);
 
-bool equalNEDandFloat3(mavsdk::Offboard::PositionNedYaw point,Antilatency::Math::float3 position,float epsilon);
+bool compareNEDandFloat3(mavsdk::Offboard::PositionNedYaw point,Antilatency::Math::float3 position,float epsilon);
 
-mavsdk::Offboard::PositionNedYaw convertFloat3ToNED(Antilatency::Math::float3 position,float yawDegrees);
+mavsdk::Offboard::PositionNedYaw convertFloat3YawToNedYaw(Antilatency::Math::float3 position,float yawDegrees);
 
-mavsdk::Mocap::VisionPositionEstimate convertAltPoseToVisionPositionEstimate(Antilatency::Math::floatP3Q pose);
+mavsdk::Mocap::VisionPositionEstimate convertTrackingPoseToVisionPositionEstimate(Antilatency::Math::floatP3Q pose);
 
 // Convert degree to radians [-pi : pi]
 float angleInDegToRaD(float angleInDeg);

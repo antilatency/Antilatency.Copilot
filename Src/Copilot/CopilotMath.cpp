@@ -1,13 +1,13 @@
 #include "CopilotMath.h"
 
-bool equal(float first, float second, float epsilon){
+bool compare(float first, float second, float epsilon){
     return (fabsf32(first-second)<=epsilon);
 }
 
-bool equalNEDandFloat3(mavsdk::Offboard::PositionNedYaw point, Antilatency::Math::float3 position, float epsilon){
-    bool X = equal(point.east_m,position.x,epsilon);
-    bool Z = equal(point.north_m,position.z,epsilon);
-    bool Y = equal(-point.down_m,position.y,epsilon);
+bool compareNEDandFloat3(mavsdk::Offboard::PositionNedYaw point, Antilatency::Math::float3 position, float epsilon){
+    bool X = compare(point.east_m,position.x,epsilon);
+    bool Z = compare(point.north_m,position.z,epsilon);
+    bool Y = compare(-point.down_m,position.y,epsilon);
     if(X&&Y&&Z){
         return true;
     } else{
@@ -15,7 +15,7 @@ bool equalNEDandFloat3(mavsdk::Offboard::PositionNedYaw point, Antilatency::Math
     }
 }
 
-mavsdk::Offboard::PositionNedYaw convertFloat3ToNED(Antilatency::Math::float3 position, float yawDegrees){
+mavsdk::Offboard::PositionNedYaw convertFloat3YawToNedYaw(Antilatency::Math::float3 position, float yawDegrees){
     mavsdk::Offboard::PositionNedYaw pointNED;
     pointNED.north_m = position.z;
     pointNED.east_m = position.x;
@@ -23,8 +23,6 @@ mavsdk::Offboard::PositionNedYaw convertFloat3ToNED(Antilatency::Math::float3 po
     pointNED.yaw_deg = yawDegrees;
     return pointNED;
 }
-
-
 
 float angleInDegToRaD(float inDeg){
     float angleInRad = 0;
@@ -71,7 +69,7 @@ AnglesInRadians anglesInDegToRad(AnglesInDegrees anglesInDegrees){
     return anglesInRadians;
 }
 
-mavsdk::Mocap::VisionPositionEstimate convertAltPoseToVisionPositionEstimate(Antilatency::Math::floatP3Q pose)
+mavsdk::Mocap::VisionPositionEstimate convertTrackingPoseToVisionPositionEstimate(Antilatency::Math::floatP3Q pose)
 {
     mavsdk::Mocap::VisionPositionEstimate trackingDataForPX4;
     std::vector<float> matrix = {NAN};

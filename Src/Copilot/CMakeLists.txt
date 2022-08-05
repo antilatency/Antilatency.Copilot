@@ -1,12 +1,12 @@
 target_sources(${PROJECT}
 PUBLIC
-    TrackingForCopilot.cpp
+    Application.cpp
+    PrintTrackingStateApplication.cpp
+    TargetLandingApplication.cpp
     CopilotMath.cpp
-    TargetLanding.cpp
-    PX4.cpp
 
-    TrackingForCopilot.h
+    Application.h
+    PrintTrackingStateApplication.h
+    TargetLandingApplication.h
     CopilotMath.h
-    TargetLanding.h
-    PX4.h
 )

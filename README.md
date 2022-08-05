@@ -31,7 +31,7 @@
 
 # Antilatency Copilot Demo C++
 
-This project features Antilatency Copilot Demo, which provides functionality for autonomous landing of drones equipped with a [PX4] autopilot at predefined coordinates using Antilatency libraries and [MAVSDK].
+This project features Antilatency Copilot Demo, which provides functionality for autonomous landing of drones equipped with a [PX4] autopilot at predefined coordinates using [Antilatency libraries] and [MAVSDK].
 
 <p align="center">
   <a href="https://youtu.be/T4TEdzSLyi0" target="_blank">
@@ -65,7 +65,7 @@ You need
 * A Raspberry Pi 3 or 4 single board computer.
 * A microSD card with installed operating system (OS) and MAVSDK.
 * A pair of Antilatency devices: an [Alt] and a [Wired USB Socket].
-* A computer with Windows 10 and installed [AntilatencyService].
+* A computer with Windows 10 and installed [AntilatencyService], [QGroundControl].
 * An properly assembled tracking area. Appropriate to [Environment] should be added to [AntilatencyService].
 * A drone with PX4 autopilot.
 
@@ -196,16 +196,29 @@ Connect RPi to PX4 as shown:
 <p align="center">
 <img src="ImageForReadme/Scheme.png" width="580px"></p>
 
+## How to configure PX4 to work with Alt
+
 PX4 autopilot settings are set in QGroundControl
-Vehicle Setup -> Parameters
+<p align="center">
+<img src="ImageForReadme/VehicleSetup.png" width="580px"></p>
+
+Go to the “Parameters” tab and find the parameter “EKF2_AID_MASK". Go to Parameter Editor by pressing LBM.
+<p align="center">
+<img src="ImageForReadme/ParamAID.png" width="580px"></p>
+
+In Parameter Editor check "Advanced settings" and "Manual Entry". Then enter value 24 and Save parameter.
+
+<p align="center">
+<img src="ImageForReadme/ParamEditorAID.png" width="580px"></p>
+
+Also find the following parameters and set the values without using "Advanced settings".
 
 |Parametr|Value|
 |---|---|
-|EKF2_AID_MASK|24|
 |EKF2_EV_DELAY|14.0ms|
 |EKF2_HGT_MODE|Vision|
 |MAV_1_CONFIG|TELEM2|
-|MAV_1_RATE|921600 B/s|
+|MAV_1_RATE|92160 B/s|
 
 ## How to compile an AntilatencyCopilotDemo app
 
@@ -318,11 +331,11 @@ Run the program, only this time add the following arguments to Environment (1-ar
 |4| Z|
 |5| Y|
 |6| Yaw|
-|7| Safe altituda|
+|7| Safe altitude|
 |8| accuracy XZ
 |9| accuracy Yaw
 
-Safe altituda is the safe height at which the drone will travel to the landing point.
+Safe altitude is the safe height at which the drone will travel to the landing point.
 
 Accuracy XZ - accuracy of adherence to the set coordinates of the landing point (Copilot works in conjunction with the autopilot, and positioning accuracy depends, among other things, on how much your drone is calibrated. During the first tests, it is recommended to land on a flat surface with an accuracy of at least 0.03 in order to evaluate the algorithm as a whole).
 
@@ -338,28 +351,14 @@ After run app you will see the data you set:
 <p align="center">
 <img src="ImageForReadme/SecondModeDataSet.png" width="480px"></p>
 
-If you notice an error, you can abort the program with Ctrl+C at any time and enter the correct parameters.
-
-Next comes the connection to the autopilot and Alt:
-
-<p align="center">
-<img src="ImageForReadme/SecondModeConnection.png" width="480px"></p>
-
-When everything is ready, you will receive the corresponding message:
-
-<p align="center">
-<img src="ImageForReadme/SecondModeReady.png" width="480px"></p>
-
-Further, the current coordinates will appear in the console once every 5 seconds.
- 
-Also, you can see the correspondence of tracking coordinates and NED - coordinates in QGroundControl:
+You can see the correspondence of tracking coordinates and NED - coordinates in QGroundControl:
 
 <p align="center">
 <img src="ImageForReadme/SecondModeQGC.png" width="580px"></p>
 
 You can now fly your drone 
 
-When you decide to land at the given coordinates, give the command **once** from your RC or from QGroundControl. If at this moment the drone is in the tracking area Copilot will land at the specified coordinates!
+When you decide to land at the given coordinates, give a standard landing command **once** from your RC or from QGroundControl. If at this moment the drone is in the tracking area Copilot will take over control, switching flight mode to offboard mode and landing at the specified coordinates!
 
 [Alt]: <https://developers.antilatency.com/Hardware/Alt_en.html>
 
@@ -371,13 +370,15 @@ When you decide to land at the given coordinates, give the command **once** from
 
 [Environment]: <https://developers.antilatency.com/Terms/Environment_en.html>
 
-[Placement]: <https://developers.antilatency.com/Terms/Placement_en.html>
-
 [Github]: <https://github.com/antilatency/Antilatency.Copilot>
+
+[Placement]: <https://developers.antilatency.com/Terms/Placement_en.html>
 
 [MAVSDK]: <https://mavsdk.mavlink.io/main/en/index.html>
 
 [PX4]: <https://px4.io>
+
+[QGroundControl]: <http://qgroundcontrol.com/>
 
 [Raspberry Pi Imager]: <https://www.raspberrypi.com/software/>
 
