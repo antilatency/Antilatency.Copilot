@@ -39,7 +39,7 @@ This project features Antilatency Copilot Demo, which provides functionality for
   </a>
 </p>
 
-
+This is the CoPilot MVP code for Raspberry Pi. The app asks PX4 for `FlightMode`, and once the mode changes to `land`, it activates off-board mode and takes over to land the drone with precision. `FlightMode` changes to `land` after you send a corresponding command with `QGroundControl` during the flight, or from your RC with this command assigned to one of the switches.
 
 ## Table of Contens
 * [Overview](#overview)
