@@ -24,7 +24,7 @@
 <br>
 
 <p align="center">
-  <a href="https://discord.gg/rycqv3mq"><img src="ImageForReadme/DiscordButton.svg" alt="Discord conversation" width="180px"/></a>
+  <a href="https://discord.gg/ZTqmfPsGEr"><img src="ImageForReadme/DiscordButton.svg" alt="Discord conversation" width="180px"/></a>
 </p>
 
 <br>
