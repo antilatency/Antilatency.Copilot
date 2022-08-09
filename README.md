@@ -175,7 +175,7 @@ sudo python -m pip install --upgrade pymavlink
 Building and install MAVSDK. Configure first, then build:
 ```
 sudo cmake -Bbuild/default -DCMAKE_BUILD_TYPE=Release -H.
-sudo cmake --build build/default -j8
+sudo cmake --build build/default -j4
 ```
 
 Install system-wide
@@ -252,6 +252,12 @@ sudo make
 ```
 The ./build directory now contains the executable file AntilatencyCopilotDemo and libraries.
 
+You may need to run AntilatencyCopilotDemo as root to work with USB devices (i.e. sudo ./AntilatencyCopilotDemo ...) or add rule for Antilatency USB devices:
+
+```
+echo 'SUBSYSTEM=="usb", ATTRS{idVendor}=="3237", MODE="0666", GROUP="pi"' | sudo tee /etc/udev/rules.d/66-antilatency.rules
+```
+
 ## How to run app AntilatencyCopilotDemo
 
 The executable file AntilatencyCopilotDemo can be run in two modes:
@@ -283,9 +289,9 @@ Placement data:
 
 `AAAAAAAAAAAAj8J1PdoPyT8AAAAA2g9JwA`
  
-Run AntilatencyCopilotDemo as a root user to work with USB devices.
+Run AntilatencyCopilotDemo.
  
-`sudo ./AntilatencyCopilotDemo AntilatencyAltEnvironmentHorizontalGrid~AgZ5ZWxsb3cEBLhTiT_cRqA-r45jvZqZmT4AAAAAAAAAAACamRk_AAQBAAAAAQEBAwADAQE AAAAAAAAAAAAj8J1PdoPyT8AAAAA2g9JwA`
+`./AntilatencyCopilotDemo AntilatencyAltEnvironmentHorizontalGrid~AgZ5ZWxsb3cEBLhTiT_cRqA-r45jvZqZmT4AAAAAAAAAAACamRk_AAQBAAAAAQEBAwADAQE AAAAAAAAAAAAj8J1PdoPyT8AAAAA2g9JwA`
  
 Immediately after the run, the program will create ADN, find a connected Alt and start tracking.
 
