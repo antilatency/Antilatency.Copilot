@@ -301,7 +301,7 @@ Immediately after the run, the program will create ADN, find a connected Alt and
 After starting the tracking, the program will request the state of an Alt and output its state every 1 second (1FPS) in the terminal:
  
 Position - the tridimensional worldspace pose of the object. Position is in meters.
-Yaw - yaw about the z-axis of environment.
+Yaw - yaw about the y-axis of environment.
  
 Stability stage - if it is Tracking6Dof, tracking data is good.
  
