@@ -146,7 +146,7 @@ You will need to reconnect to your Raspberry PI to continue.
 
 ## How to install MAVSDK
 
-It is recommended to install the MAVSDK using the [building MAVSDK library from source], as other methods contain bugs and may not be completed correctly.
+Install the MAVSDK v1.4.0 using building library from source.
 
 Install packages build-essential, cmake, git:
 
@@ -154,7 +154,7 @@ Install packages build-essential, cmake, git:
 
 Download the MAVSDK source using git:
 
-`git clone https://github.com/mavlink/MAVSDK.git`
+`git clone -b v1.4.0 https://github.com/mavlink/MAVSDK.git`
 
 Enter the folder with cloned files:
 
@@ -222,28 +222,15 @@ Also find the following parameters and set the values without using "Advanced se
 
 ## How to compile an AntilatencyCopilotDemo app
 
-Make a project directory in the file system. Select it.
-
-```
-cd <full path to project directory> 
-mkdir <project directory> 
-cd <project directory>
-```
-For example,
-```
-cd /home/pi
-mkdir AntilatencyCopilotDemo
-cd AntilatencyCopilotDemo
-```
 Clone the repository from [Github]
 
  `git clone --recurse-submodules https://github.com/antilatency/Antilatency.Copilot`
 
 Create a directory for the executable file.
 ```
-cd ./AntilatencyCopilotDemo/Antilatency.Copilot
+cd Antilatency.Copilot/
 mkdir build
-cd ./build
+cd build/
 ```
 Сompile and build the project from the terminal:
 ```
