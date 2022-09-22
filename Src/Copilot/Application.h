@@ -15,7 +15,7 @@ public:
                 Antilatency::Alt::Environment::Selector::ILibrary &environmentSelectorLibrary,
                 std::string environmentData, std::string placementData);
 
-    virtual int run() = 0;
+    virtual void run() = 0;
 
 protected:
     std::optional<Antilatency::Alt::Tracking::State> getTrackingState();

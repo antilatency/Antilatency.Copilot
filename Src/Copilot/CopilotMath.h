@@ -26,6 +26,8 @@ struct QuaternionDrone
 
 bool compare(float first,float second,float epsilon);
 
+bool compareYaw(float first, float second, float epsilon);
+
 bool compareNEDandFloat3(mavsdk::Offboard::PositionNedYaw point,Antilatency::Math::float3 position,float epsilon);
 
 mavsdk::Offboard::PositionNedYaw convertFloat3YawToNedYaw(Antilatency::Math::float3 position,float yawDegrees);

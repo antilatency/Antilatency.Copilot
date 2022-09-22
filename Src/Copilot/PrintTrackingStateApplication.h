@@ -9,7 +9,7 @@ public:
                         Antilatency::Alt::Tracking::ILibrary &altTrackingLibrary,
                         Antilatency::Alt::Environment::Selector::ILibrary &environmentSelectorLibrary,
                         std::string environmentData, std::string placementData);
-    int run() override;
+   void run() override;
 
 protected:
     void printTrackingState();

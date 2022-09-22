@@ -9,7 +9,7 @@
   <br>
   <br>
   <i>Antilatency Copilot is a positional solution based on Antilatency tracking system and
-    <br> Raspberry PI that provides you with precise indoor navigation and outdoor landing for 
+    <br> Raspberry Pi that provides you with precise indoor navigation and outdoor landing for 
     <br> drones
   </i>
   <br>
@@ -31,27 +31,27 @@
 
 # Antilatency Copilot Demo C++
 
-This project features Antilatency Copilot Demo, which provides functionality for autonomous landing of drones equipped with a [PX4] autopilot at predefined coordinates using [Antilatency libraries] and [MAVSDK].
+This project features Antilatency Copilot Demo, which provides functionality for autonomous drone landing at predefined coordinates and indoor navigation for drones using [Antilatency libraries] and [MAVSDK]. Copilot currently supports [PX4] autopilot and Ardupilot. Other ones are coming soon.
 
 <p align="center">
   <a href="https://youtu.be/T4TEdzSLyi0" target="_blank">
     <img src="ImageForReadme/cover.png" width="680px">
   </a>
 </p>
-
-This is the CoPilot MVP code for Raspberry Pi. The app asks PX4 for `FlightMode`, and once the mode changes to `land`, it activates off-board mode and takes over to land the drone with precision. `FlightMode` changes to `land` after you send a corresponding command with `QGroundControl` during the flight, or from your RC with this command assigned to one of the switches.
-
-## Table of Contens
+ 
+## Table of contents
 * [Overview](#overview)
 * [Getting started](#getting-started)
-* [How to install operating system on Raspberry Pi](#how-to-install-operating-system-on-raspberry-pi)
-    * [Configure Raspberry Pi serial port](#configure-raspberry-pi-serial-port)
-* [How to install MAVSDK](#how-to-install-mavsdk)
-* [How to place an Alt on a drone and connect to PX4](#how-to-place-an-alt-on-a-drone-and-connect-to-px4)
-* [How to compile an AntilatencyCopilotDemo app](#how-to-compile-an-antilatencycopilotdemo-app)
-* [How to run app AntilatencyCopilotDemo](#how-to-run-app-antilatencycopilotdemo)
-    * [First mode](#first-mode)
-    * [Second mode](#second-mode)
+* [Installing an operating system on Raspberry Pi](#installing-an-operating-system-on-raspberry-pi)
+    * [Configuring Raspberry Pi serial port](#configuring-raspberry-pi-serial-port)
+* [Installing MAVSDK](#installing-mavsdk)
+* [Placing an Alt on a drone and connecting to pixhawk type autopilot](#placing-an-alt-on-a-drone-and-connecting-to-pixhawk-type-autopilot)
+* [Configuring PX4 to work with Copilot](#configuring-px4-to-work-with-copilot)
+* [Configuring Ardupilot to work with Copilot](#configuring-ardupilot-to-work-with-copilot)
+* [Compiling an AntilatencyCopilotDemo app](#compiling-an-antilatencycopilotdemo-app)
+* [Running the AntilatencyCopilotDemo app](#running-the-antilatencycopilotdemo-app)
+    * [Determining landing coordinates mode](#determining-landing-coordinates-mode)
+    * [Landing mode](#landing-mode)
 
 
 ## Overview 
@@ -59,19 +59,19 @@ This is the CoPilot MVP code for Raspberry Pi. The app asks PX4 for `FlightMode`
 Structure: 
 * ./AntilatencySdk/Api contains headers for Antilatency libraries;
 * ./AntilatencySdk/Bin/ contains prebuilt libraries;
-* ./Src contains project with code of example.
+* ./Src contains project with example сode.
 
-You need
+You`ll need
 * A Raspberry Pi 3 or 4 single board computer.
-* A microSD card with installed operating system (OS) and MAVSDK.
+* A microSD card with installed operating system (OS) and [MAVSDK].
 * A pair of Antilatency devices: an [Alt] and a [Wired USB Socket].
 * A computer with Windows 10 and installed [AntilatencyService], [QGroundControl].
-* An properly assembled tracking area. Appropriate to [Environment] should be added to [AntilatencyService].
-* A drone with PX4 autopilot.
+* A properly assembled tracking area. An appropriate to [Environment] should be added to [AntilatencyService].
+* A drone with PX4 or Ardupilot.
 
 ## Getting started
 
-## How to install operating system on Raspberry Pi:
+## Installing an operating system on Raspberry Pi:
 
 Download and install [Raspberry Pi Imager] to a computer with an SD card reader. Put the SD card you'll use with your Raspberry Pi into the reader and run Raspberry Pi Imager.
 
@@ -82,7 +82,7 @@ Download and install [Raspberry Pi Imager] to a computer with an SD card reader.
 * Set username 'pi' and password *(do not forget it)*
 * Configure wireless LAN. The name of your WiFi hotspot and password of your WiFi hotspot.
 3) CHOOSE STORAGE: choose your microSD card.
-4) Push the WRITE button to write and verify the SD card.
+4) Click the WRITE button to write and verify the SD card.
 
 Insert the microSD card with the OS image into Raspberry Pi, and turn it on. 
 
@@ -101,6 +101,7 @@ If all goes well you will see:
 `pi@<hostname>:~$`
 
 You are working in terminal on your Raspberry Pi!
+
 Next, get the latest system updates.
 Execute commands in terminal:
 
@@ -108,7 +109,7 @@ Execute commands in terminal:
 
 `sudo apt full-upgrade`
 
-### Configure Raspberry Pi serial port
+### Configuring Raspberry Pi serial port
 
 Execute commands in terminal:
 
@@ -116,7 +117,7 @@ Execute commands in terminal:
 
 You should then see a blue screen with options in a grey box.
 
-Use the up and down arrow keys to move the highlighted selection between the options available. Pressing the right arrow key will jump out of the Options menu and take you to the "Select" and "Finish" buttons. Pressing left will take you back to the options. Alternatively, you can use the Tab key to switch between these.
+Use the up and down arrow keys to move the highlighted selection between the options available. Pressing the right arrow key will lead you out of the Options menu and take you to the "Select" and "Finish" buttons. Pressing left will take you back to the options. Alternatively, you can use the Tab key to switch between these.
 
 Choose Interface Options
 
@@ -144,9 +145,9 @@ You will need to reconnect to your Raspberry PI to continue.
 
 `ssh pi@<hostname>.local`
 
-## How to install MAVSDK
+## Installing MAVSDK
 
-Install the MAVSDK v1.4.0 using building library from source.
+Install the MAVSDK v1.4.0 using building MAVSDK library from source.
 
 Install packages build-essential, cmake, git:
 
@@ -183,44 +184,79 @@ Install system-wide
 `sudo cmake --build build/default --target install`
 
 MAVSDK is installed!
-Exit to the root directory `cd ..`
 
-## How to place an Alt on a drone and connect to PX4 
+Exit to the root directory 
+
+`cd ..`
+
+## Placing an Alt on a drone and connecting to pixhawk type autopilot 
 
 Place a [Wired USB Socket] with an [Alt] on the surface of your drone so that an Alt has a lower hemisphere field view if the tracking area is on the floor, or an upper hemisphere field view if the tracking area is on the ceiling.
 
 Place your RPi on the drone and connect it to the Wired USB Socket using a USB type-c cable.
 
-Connect RPi to PX4 as shown:
+Connect RPi to autopilot as shown:
 
 <p align="center">
 <img src="ImageForReadme/Scheme.png" width="580px"></p>
 
-## How to configure PX4 to work with Alt
+## Configuring PX4 to work with Copilot
 
 PX4 autopilot settings are set in QGroundControl
 <p align="center">
 <img src="ImageForReadme/VehicleSetup.png" width="580px"></p>
 
-Go to the “Parameters” tab and find the parameter “EKF2_AID_MASK". Go to Parameter Editor by pressing LBM.
+Go to the “Parameters” tab and find the parameter “EKF2_AID_MASK". Go to Parameter Editor by pressing LMB.
 <p align="center">
 <img src="ImageForReadme/ParamAID.png" width="580px"></p>
 
-In Parameter Editor check "Advanced settings" and "Manual Entry". Then enter value 24 and Save parameter.
+Check "Advanced settings" and "Manual Entry" in the Parameter Editor. Then enter value 24 and Save parameter.
 
 <p align="center">
 <img src="ImageForReadme/ParamEditorAID.png" width="580px"></p>
 
-Also find the following parameters and set the values without using "Advanced settings".
+Then, find the following parameters and set the values without using "Advanced settings".
 
-|Parametr|Value|
+|Parameter|Value|
 |---|---|
-|EKF2_EV_DELAY|14.0ms|
+|EKF2_EV_DELAY|20.0ms|
 |EKF2_HGT_MODE|Vision|
 |MAV_1_CONFIG|TELEM2|
 |MAV_1_RATE|92160 B/s|
 
-## How to compile an AntilatencyCopilotDemo app
+## Configuring Ardupilot to work with Copilot
+
+Ardupilot settings are set in QGroundControl
+
+<p align="center">
+<img src="ImageForReadme/VehicleSetupArdu.png" width="580px"></p>
+
+Go to the “Parameters” tab and set follow value for parameters:
+
+<p align="center">
+<img src="ImageForReadme/ParamEditorArdu.png" width="580px"></p>
+
+Parameter|Value|
+|---|---|
+|SERIAL2_PROTOCOL|MAVLink2|
+|SERIAL2_BAUD|921600|
+|AHRS_EKF_TYPE|Enable EKF3|
+|EK2_ENABLE|Disabled|
+|EK3_ENABLE|Enabled|
+|EK3_SRC1_POSXY|6|
+|EK3_SRC1_POSZ|6|
+|EK3_SRC1_VELXY|6|
+|EK3_SRC1_VELZ|6|
+|EK3_SRC1_YAW|6|
+|GPS_TYPE|None|
+|VISO_TYPE|MAV|
+|COMPASS_USE|Disabled|
+|COMPASS_USE2|Disabled|
+|COMPASS_USE3|Disabled|
+
+
+
+## Compiling an AntilatencyCopilotDemo app
 
 Clone the repository from [Github]
 
@@ -237,7 +273,7 @@ cd build/
 sudo cmake ../
 sudo make
 ```
-The ./build directory now contains the executable file AntilatencyCopilotDemo and libraries.
+The /build directory now contains the executable AntilatencyCopilotDemo file  and libraries.
 
 You may need to run AntilatencyCopilotDemo as root to work with USB devices (i.e. sudo ./AntilatencyCopilotDemo ...) or add rule for Antilatency USB devices:
 
@@ -245,14 +281,14 @@ You may need to run AntilatencyCopilotDemo as root to work with USB devices (i.e
 echo 'SUBSYSTEM=="usb", ATTRS{idVendor}=="3237", MODE="0666", GROUP="pi"' | sudo tee /etc/udev/rules.d/66-antilatency.rules
 ```
 
-## How to run app AntilatencyCopilotDemo
+##  Running the AntilatencyCopilotDemo app
 
-The executable file AntilatencyCopilotDemo can be run in two modes:
-The [first mode](#first-mode) is used to determine the coordinates of the desired landing point.
-The [second mode](#second-mode) is landing at the specified coordinates using the standard Land command from your RC System.
+The executable AntilatencyCopilotDemo file can be run in two modes:
+The [Determining landing coordinates mode](#determining-landing-coordinates-mode) is used to determine the coordinates of the desired landing point.
+The [Landing mode](#landing-mode) is landing at the specified coordinates using the standard Land command from your RC System.
 
-### First mode
-During launch, the executable file AntilatencyCopilotDemo expects two arguments: [Environment] data as the first argument and [Placement] data as the second argument. Both arguments can be derived from [AntilatencyService]. Using the Copy link menu item (in Windows Desktop version) or Share... (in version for Universal Windows Platform and Android), copy the link to Environment and Placement.
+### Determining landing coordinates mode
+During launch, the executable file AntilatencyCopilotDemo expects two arguments: [Environment] data as the first argument and [Placement] data as the second argument. Both arguments can be derived from [AntilatencyService]. Copy the link to Environment and Placement using the Copy link menu item (in Windows Desktop version) or Share... (in version for Universal Windows Platform and Android).
 
 For example, links to Environment and Placement may look like this:
 
@@ -262,9 +298,9 @@ Environment link:
 
 Placement link: 
 
-`http://www.antilatency.com/antilatencyservice/placement?data=AAAAAAAAAAAAj8J1PdoPyT8AAAAA2g9JwA&name=Identity`
+`http://www.antilatency.com/antilatencyservice/placement?data=AAAAAAAAAAAAj8J1PdoPyT8AAAAA2g9JwA&name=mydroneconfiguration1`
 
-To get Environment and Placement data from the links, leave fragments after data= and before &name=.
+To get Environment and Placement data from the links, leave out fragments after data= and before &name=
 
 Below are Environment and Placement data arguments for the AntilatencyCopilotDemo:
 
@@ -285,12 +321,13 @@ Immediately after the run, the program will create ADN, find a connected Alt and
 <p align="center">
 <img src="ImageForReadme/FirstMode.png" width="680px"></p>
 
-After starting the tracking, the program will request the state of an Alt and output its state every 1 second (1FPS) in the terminal:
+After starting tracking, the program will request the state of an Alt and output its extrapolated state every 1 second (1FPS) into the terminal:
  
-Position - the tridimensional worldspace pose of the object. Position is in meters.
-Yaw - yaw about the y-axis of environment.
+Position - the tridimensional worldspace position of the object. Position is measured in meters.
+
+Yaw - yaw about the y-axis of the environment.
  
-Stability stage - if it is Tracking6Dof, tracking data is good.
+Stability stage - if it's Tracking6Dof, tracking data is good.
  
 The Position coordinates correspond to the NED coordinates of the drone as follows:
 
@@ -298,24 +335,26 @@ x - east
 
 z - north
 
-y - negativ down
+y - negative down
 
 <p align="center">
 <img src="ImageForReadme/CoordinateSystemNED.png" width="340px"></p>
 
-Place the drone to the spot where you want it to land on the Land command.
-For example, in the environment center:
+Place the drone on the spot where you want it to land via the Land command.
 
+ Remember the position values to exactly three decimal places and the value of yaw to integer precision.
+
+For example:
 <p align="center">
 <img src="ImageForReadme/CentreCoordinate.png" width="480px"></p>
 
-Remember the values ​​of position to exactly three decimal places and the value of yaw to integer precision.
- 
+X = 0.000, Z = 0.000, Y = 0.151, Yaw = 357. 
+
 End the program with Ctrl+C.
 
-### Second mode
+### Landing mode
 
-When starting the second mode, you must be sure that your drone is calibrated and all instructions from [How to..](#how-to-place-an-alt-on-a-drone-and-connect-to-px4) have been followed.
+When starting the Landing mode, you must be sure that your drone is calibrated and all instructions from [here](#placing-an-alt-on-a-drone-and-connecting-to-pixhawk-type-autopilot) and [here](#configuring-px4-to-work-with-an-alt) or [here](#configuring-ardupilot-to-work-with-alt) have been followed.
 
 Run the program, only this time add the following arguments to Environment (1-arg) and Placement(2-arg) data arguments:
 |№arg|param|
@@ -328,11 +367,11 @@ Run the program, only this time add the following arguments to Environment (1-ar
 |8| accuracy XZ
 |9| accuracy Yaw
 
-Safe altitude is the safe height at which the drone will travel to the landing point.
+Safe altitude is a safe height at which the drone will travel to the landing point.
 
-Accuracy XZ - accuracy of adherence to the set coordinates of the landing point (Copilot works in conjunction with the autopilot, and positioning accuracy depends, among other things, on how much your drone is calibrated. During the first tests, it is recommended to land on a flat surface with an accuracy of at least 0.03 in order to evaluate the algorithm as a whole).
+Accuracy XZ - accuracy of adherence to the set coordinates of the landing point (Copilot works in conjunction with the autopilot, and positioning accuracy depends, among other things, on how well your drone is calibrated. During the first tests, it is recommended to land on a flat surface with an accuracy of at least 0.05 in order to evaluate the algorithm as a whole).
 
-Accuracy YAW - accuracy of compliance with the specified angle Yaw (it is also recommended to set the accuracy to at least 3 during the first tests)
+Accuracy YAW - accuracy of compliance with the specified angle Yaw (it is also recommended to set the accuracy to at least 5 during the first tests)
 
 The first step to landing on a target is - move to a safe altitude, second step - move along the safe altitude to a target point, and third step - land.
 
@@ -344,14 +383,14 @@ After run app you will see the data you set:
 <p align="center">
 <img src="ImageForReadme/SecondModeDataSet.png" width="480px"></p>
 
-You can see the correspondence of tracking coordinates and NED - coordinates in QGroundControl:
+Also, you can see the correspondence of tracking coordinates and NED - coordinates in QGroundControl:
 
 <p align="center">
 <img src="ImageForReadme/SecondModeQGC.png" width="580px"></p>
 
-You can now fly your drone 
+You can now fly your drone. 
 
-When you decide to land at the given coordinates, give a standard landing command **once** from your RC or from QGroundControl. If at this moment the drone is in the tracking area Copilot will take over control, switching flight mode to offboard mode and landing at the specified coordinates!
+When you decide to land at the given coordinates, give the command **once** from your RC or from QGroundControl. If at this moment the drone is in the tracking area Copilot will take over control, switching flight mode to offboard mode and landing at the specified coordinates!
 
 [Alt]: <https://developers.antilatency.com/Hardware/Alt_en.html>
 
@@ -372,6 +411,10 @@ When you decide to land at the given coordinates, give a standard landing comman
 [PX4]: <https://px4.io>
 
 [QGroundControl]: <http://qgroundcontrol.com/>
+
+[QGroundControl "Land"]: <https://docs.qgroundcontrol.com/master/en/FlyView/FlyView.html#land>
+
+[assigned]: <https://docs.qgroundcontrol.com/master/en/SetupView/FlightModes.html>
 
 [Raspberry Pi Imager]: <https://www.raspberrypi.com/software/>
 

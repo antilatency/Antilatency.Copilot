@@ -4,6 +4,7 @@
 
 #include "Application.h"
 #include "CopilotMath.h"
+#include "CopilotAction.h"
 
 #include <Antilatency.Api.h>
 
@@ -13,6 +14,7 @@
 #include <mavsdk/plugins/telemetry/telemetry.h>
 #include <mavsdk/plugins/mocap/mocap.h>
 #include <mavsdk/plugins/offboard/offboard.h>
+#include <mavsdk/plugins/mavlink_passthrough/mavlink_passthrough.h>
 
 class TargetLandingApplication : public Application
 {
@@ -43,7 +45,7 @@ public:
                         Antilatency::Alt::Environment::Selector::ILibrary &environmentSelectorLibrary,
                         std::string environmentData, std::string placementData);
 
-    int run() override;
+    void run() override;
 
 private:
     void doTargetLanding(std::optional<Antilatency::Alt::Tracking::State> trackingStage);
@@ -55,6 +57,7 @@ private:
     std::shared_ptr<mavsdk::Telemetry> _telemetry;
     std::shared_ptr<mavsdk::Offboard> _offboard;
     std::shared_ptr<mavsdk::Action> _action;
+    std::shared_ptr<mavsdk::MavlinkPassthrough> _mavlinkPassthrough;
 
     enum StageOfLanding {
         WaitingForLandCommand,
@@ -70,6 +73,16 @@ private:
         DetecterFaildOfLanding
     };
 
+    CopilotAction* _copilotAction;
+
+    enum TypeOfAutopilot{
+        Unknown,
+        Ardupilot   = 3,
+        PX4         = 12
+    };
+
+    std::optional<TypeOfAutopilot> _typeOfAutopilot = std::nullopt;
+    mavsdk::Telemetry::FlightMode _flightMode = mavsdk::Telemetry::FlightMode::Unknown;
     StageOfLanding _stageTargetLanding = WaitingForLandCommand;
     LandingTargetProperties _landingTargetProperties;
     int _countFaildOfLanding = 0;

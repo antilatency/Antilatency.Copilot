@@ -7,7 +7,7 @@ PrintTrackingStateApplication::PrintTrackingStateApplication(int periodOfPrintin
 
 }
 
-int PrintTrackingStateApplication::run() {
+void PrintTrackingStateApplication::run() {
     auto timeBegin = std::chrono::system_clock::now();
     while(true){
         if(std::chrono::duration_cast<std::chrono::seconds>(std::chrono::system_clock::now()-timeBegin).count() >= _periodOfPrintingTrackingStateSec){
@@ -16,7 +16,6 @@ int PrintTrackingStateApplication::run() {
         }
         std::this_thread::yield();
     }
-    return 0;
 }
 
 void PrintTrackingStateApplication::printTrackingState(){

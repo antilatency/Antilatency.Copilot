@@ -4,6 +4,16 @@ bool compare(float first, float second, float epsilon){
     return (fabsf32(first-second)<=epsilon);
 }
 
+bool compareYaw(float first, float second, float epsilon)
+{
+    if((first > 270) && (second < 90)){
+        second +=360;
+    } else if((second > 270) && (first <90)){
+        first += 360;
+    }
+    return compare(first,second,epsilon);
+}
+
 bool compareNEDandFloat3(mavsdk::Offboard::PositionNedYaw point, Antilatency::Math::float3 position, float epsilon){
     bool X = compare(point.east_m,position.x,epsilon);
     bool Z = compare(point.north_m,position.z,epsilon);

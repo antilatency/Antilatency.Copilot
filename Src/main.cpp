@@ -23,6 +23,7 @@ std::string getApplicationDirectory() {
         }
         --i;
     }
+    return nullptr;
 }
 
 bool loadAntilatencyLibraries(Antilatency::DeviceNetwork::ILibrary &deviceNetworkLibrary,
@@ -109,7 +110,7 @@ int main(int argc, char* argv[]) {
         case 3:{
             printInfo(environmentData, placementData);
             PrintTrackingStateApplication printTrackerState(periodOfPrintingTrackingStateSec,deviceNetworkLibrary,altTrackingLibrary,environmentSelectorLibrary,environmentData,placementData);
-            return printTrackerState.run();
+            printTrackerState.run();
         } break;
         case 10:{
             landingTargetProperties.position.x      = std::stof(argv[3]);
@@ -122,7 +123,7 @@ int main(int argc, char* argv[]) {
 
             printInfo(environmentData,placementData,landingTargetProperties);
             TargetLandingApplication targetLanding(landingTargetProperties,deviceNetworkLibrary,altTrackingLibrary,environmentSelectorLibrary,environmentData,placementData);
-            return targetLanding.run();
+            targetLanding.run();
         } break;
         default:{
             printInfo();
@@ -130,6 +131,7 @@ int main(int argc, char* argv[]) {
         }
     } catch (std::exception& error){
         std::cerr << error.what() << std::endl;
+        return 1;
     }
     return 0;
 }
