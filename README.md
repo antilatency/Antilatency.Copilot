@@ -354,7 +354,7 @@ End the program with Ctrl+C.
 
 ### Landing mode
 
-When starting the Landing mode, you must be sure that your drone is calibrated and all instructions from [here](#placing-an-alt-on-a-drone-and-connecting-to-pixhawk-type-autopilot) and [here](#configuring-px4-to-work-with-an-alt) or [here](#configuring-ardupilot-to-work-with-alt) have been followed.
+When starting the Landing mode, you must be sure that your drone is calibrated and all instructions from [here](#placing-an-alt-on-a-drone-and-connecting-to-pixhawk-type-autopilot) and [here](#configuring-px4-to-work-with-copilot) or [here](#configuring-ardupilot-to-work-with-copilot) have been followed.
 
 Run the program, only this time add the following arguments to Environment (1-arg) and Placement(2-arg) data arguments:
 |№arg|param|
