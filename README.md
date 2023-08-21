@@ -179,6 +179,12 @@ sudo cmake -Bbuild/default -DCMAKE_BUILD_TYPE=Release -H.
 sudo cmake --build build/default -j4
 ```
 
+If you are getting compilation errors about atomic functions
+```
+undefined reference to '__atomic_fetch_add_8'
+```
+try adding the line `target_link_libraries(mavsdk PUBLIC atomic)` to `src/mavsdk/CMakeLists.txt`
+
 Install system-wide
 
 `sudo cmake --build build/default --target install`
