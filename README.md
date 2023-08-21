@@ -179,7 +179,7 @@ sudo cmake -Bbuild/default -DCMAKE_BUILD_TYPE=Release -H.
 sudo cmake --build build/default -j4
 ```
 
-If you are getting compilation errors about atomic functions
+If you are getting linker errors about atomic functions
 ```
 undefined reference to '__atomic_fetch_add_8'
 ```
