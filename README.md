@@ -170,6 +170,7 @@ Install python implementation of the MAVLink protocol by entering the following 
 ```
 sudo apt-get install gcc python3-dev libxml2-dev libxslt-dev
 sudo apt-get install python3-numpy python3-pytest
+sudo apt-get install python3-pip  - optional
 sudo python -m pip install --upgrade future lxml
 sudo python -m pip install --upgrade pymavlink
 ```
