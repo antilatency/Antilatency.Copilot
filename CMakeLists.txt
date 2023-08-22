@@ -18,6 +18,18 @@ target_link_libraries(${PROJECT}
     dl stdc++fs pthread
 )
 
-file(GLOB ANTILATENCY_LIBS ${CMAKE_SOURCE_DIR}/AntilatencySdk/Bin/Linux/arm_linux_gnueabihf/*.so)
+
+EXECUTE_PROCESS( COMMAND gcc -dumpmachine COMMAND tr -d '\n' OUTPUT_VARIABLE ARCHITECTURE )
+
+if("${ARCHITECTURE}" STREQUAL "arm-linux-gnueabihf")
+    set(ARCH_DIR arm_linux_gnueabihf)
+elseif("${ARCHITECTURE}" STREQUAL "aarch64-linux-gnu")
+    set(ARCH_DIR aarch64_linux_gnu)
+else()
+    message("Unknown arch")
+endif()
+
+file(GLOB ANTILATENCY_LIBS ${CMAKE_SOURCE_DIR}/AntilatencySdk/Bin/Linux/${ARCH_DIR}/*.so)
 
 add_custom_command(TARGET ${PROJECT} POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy_if_different ${ANTILATENCY_LIBS} $<TARGET_FILE_DIR:AntilatencyCopilotDemo>)
+
